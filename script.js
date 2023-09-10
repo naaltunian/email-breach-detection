@@ -2,12 +2,10 @@ const fs = require('fs')
 const readlineSync = require('readline-sync')
 require('dotenv').config()
 
-
 async function main() {
-    
-    const email = readlineSync.question('What is your email? ');
+    const email = readlineSync.question('What is your email?');
     const truncateSelect = ['yes', 'no']
-    const truncateIndex = readlineSync.keyInSelect(truncateSelect, 'Do you want the full response?')
+    const truncateIndex = readlineSync.keyInSelect(truncateSelect, 'Do you want the full breach response?')
     
     const url = new URL(`${process.env.HIBP_BASE_URL}/${email}`)
     if (truncateIndex === 0) {
