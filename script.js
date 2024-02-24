@@ -7,12 +7,14 @@ async function main() {
     const truncateSelect = ['yes', 'no']
     const truncateIndex = readlineSync.keyInSelect(truncateSelect, 'Do you want the full breach response?')
     
-    const url = new URL(`${process.env.HIBP_BASE_URL}/${email}`)
+    const url = new URL(`${process.env.HIBP_BASE_URL}/breachedaccount/${email}`)
+    
     if (truncateIndex === 0) {
         url.searchParams.set('truncateResponse', 'false')
     }
 
     const response = await fetch(url, {
+        method: 'GET',
         headers: {
             'hibp-api-key': process.env.HIBP_KEY,
             'user-agent': 'nick\'s app'
